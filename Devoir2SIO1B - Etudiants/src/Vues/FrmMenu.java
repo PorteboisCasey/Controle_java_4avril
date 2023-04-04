@@ -29,8 +29,25 @@ public class FrmMenu extends JFrame
         mesCours = new ArrayList<>();
         LoadDatas();
 
-        // A compléter ici
 
+        mdl = new ModelJTable();
+        mdl.loadDatasCours(mesCours);
+        tblDemo.setModel(mdl);
+
+        int numCours = Integer.parseInt(tblDemo.getValueAt(tblDemo.getSelectedRow(),0).toString());
+
+        for (Cours crs : mesCours)
+        {
+            if(crs == numCours)
+            {
+                mdl = new ModelJTable();
+                mdl.loadDatasCours(crs.get);
+                tblDemo.setModel(mdl);
+
+
+                break
+            }
+        }
 
     }
     public void LoadDatas()
